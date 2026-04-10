@@ -1,0 +1,13 @@
+{% extends "barraca/base.html" %}
+
+{% block contenido %}
+    <h2>Buscar Producto en la Ferretería</h2>
+    
+    <form action="{% url 'resultados_busqueda' %}" method="GET">
+        <input type="text" name="nombre" placeholder="Nombre del producto..." required>
+        <button type="submit">🔍 Buscar</button>
+    </form>
+
+    <br>
+    <a href="{% url 'inicio' %}">Volver al inicio</a>
+{% endblock %}

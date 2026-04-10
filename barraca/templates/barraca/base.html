@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería y Barraca La Fe</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        nav { background: #333; padding: 10px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: white; text-decoration: none; margin-right: 15px; font-weight: bold; padding: 5px 10px; border-radius: 3px; }
+        
+        /* Estilo para el link activo (resaltado) */
+        .active-link { color: #ff9900 !important; background: rgba(255, 153, 0, 0.2); }
+        
+        nav a:hover { color: #ff9900; }
+        .container { margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        footer { margin-top: 50px; font-size: 0.8em; color: #666; }
+        .auth-links { display: flex; align-items: center; color: white; font-size: 0.9em; }
+        
+        /* Estilo para la imagen del avatar en la nav */
+        .avatar-nav {
+            width: 30px; 
+            height: 30px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-right: 10px; 
+            border: 1px solid #ff9900;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🛠️ Sistema de Gestión - LA FE</h1>
+        <nav>
+            <div class="nav-links">
+                <a href="{% url 'inicio' %}" class="{% if request.resolver_match.url_name == 'inicio' %}active-link{% endif %}">Inicio</a>
+                
+                <a href="{% url 'listar_posts' %}" class="{% if request.resolver_match.url_name == 'listar_posts' or request.resolver_match.url_name == 'detalle_post' %}active-link{% endif %}">Blog</a> 
+                
+                <a href="{% url 'form_producto' %}" class="{% if request.resolver_match.url_name == 'form_producto' %}active-link{% endif %}">Cargar Producto</a>
+
+                <a href="{% url 'listar_productos' %}" class="{% if request.resolver_match.url_name == 'listar_productos' %}active-link{% endif %}">Inventario</a>
+                
+                <a href="{% url 'form_proveedor' %}" class="{% if request.resolver_match.url_name == 'form_proveedor' %}active-link{% endif %}">Cargar Proveedor</a>
+
+                <a href="{% url 'listar_proveedores' %}" class="{% if request.resolver_match.url_name == 'listar_proveedores' %}active-link{% endif %}">Lista Proveedores</a>
+                
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active-link{% endif %}">Acerca de mí</a>
+            </div>
+
+            <div class="auth-links">
+                {% if user.is_authenticated %}
+                    
+                    {% if user.avatar_set.last %}
+                        <img src="{{ user.avatar_set.last.imagen.url }}" alt="Avatar" class="avatar-nav">
+                    {% else %}
+                        <span style="margin-right: 10px;">👤</span>
+                    {% endif %}
+
+                    <span style="margin-right: 10px; font-weight: bold; color: #ff9900;">{{ user.username }}</span>
+                    
+                    <a href="{% url 'EditarPerfil' %}" class="{% if request.resolver_match.url_name == 'EditarPerfil' %}active-link{% endif %}">Perfil</a>
+                    
+                    <form action="{% url 'Logout' %}" method="post" style="display:inline; margin-left:10px;">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:#ff4444; cursor:pointer; font-weight:bold;">Salir</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'Login' %}" class="{% if request.resolver_match.url_name == 'Login' %}active-link{% endif %}">Ingresar</a>
+                    <a href="{% url 'Register' %}" class="{% if request.resolver_match.url_name == 'Register' %}active-link{% endif %}">Registrarse</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>© 2026 - Proyecto Final: Playground - Ivan Sanchez</p>
+    </footer>
+
+</body>
+</html>

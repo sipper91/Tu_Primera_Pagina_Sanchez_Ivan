@@ -1,0 +1,9 @@
+{% extends "barraca/base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h2>Has cerrado sesión correctamente</h2>
+    <p>¡Esperamos verte pronto de nuevo!</p>
+    <a href="{% url 'Home' %}" class="btn btn-primary">Volver al inicio</a>
+</div>
+{% endblock %}

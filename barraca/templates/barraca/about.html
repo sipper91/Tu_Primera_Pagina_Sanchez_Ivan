@@ -1,0 +1,31 @@
+{% extends "barraca/base.html" %}
+{% load static %} 
+
+{% block contenido %}
+<div style="max-width: 800px; margin: 0 auto; text-align: center; padding: 20px;">
+    <h2 style="color: #333;">Acerca de mí</h2>
+    <hr style="border: 1px solid #ff9900; width: 50%;">
+    
+    <div style="margin-top: 30px; background: #f9f9f9; padding: 20px; border-radius: 15px; border: 1px solid #ddd;">
+        
+        
+        <div style="margin-bottom: 20px;">
+            <img src="{% static 'barraca/ferreteria.jpeg' %}" alt="Foto de la Ferretería" 
+                 style="width: 100%; max-width: 500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+        
+        <div style="text-align: left; padding: 0 20px;">
+            <h3 style="margin-bottom: 5px;">Ivan Sánchez López</h3>
+            <p style="color: #666; font-weight: bold; margin-top: 0;">Estudiante de Programación Python en CODERHOUSE</p>
+            
+            <p>¡Buenas! Bienvenidos a mi proyecto final de Python. Esta aplicación está desarrollada con Django, donde implemento gestión de bases de datos, usuarios y todo lo aprendido durante el curso.</p>
+            
+            <p>Está pensado para la gestión de una ferretería y barraca, integrando funcionalidades de blog para mantener informados a los clientes.</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <a href="{% url 'inicio' %}" style="text-decoration: none; color: #ff9900; font-weight: bold;">← Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "barraca/base.html" %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <div class="alert alert-danger">
+        <h3>¿Estás seguro de que quieres borrar "{{ object.titulo }}"?</h3>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirmar Borrado</button>
+            <a href="{% url 'listar_posts' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

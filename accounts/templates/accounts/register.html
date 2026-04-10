@@ -1,0 +1,20 @@
+{% extends "barraca/base.html" %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6" style="background: white; padding: 30px; border-radius: 10px; border: 1px solid #ddd; margin: 0 auto; max-width: 500px;">
+            <h2 class="text-center">Crear cuenta en LA FE</h2>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" style="background-color: #ff9900; color: white; border: none; font-weight: bold; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer;">Registrarse</button>
+            </form>
+            <p class="mt-3 text-center" style="margin-top: 15px;">
+                ¿Ya tienes cuenta? <a href="{% url 'Login' %}" style="color: #ff9900; font-weight: bold;">Ingresa aquí</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

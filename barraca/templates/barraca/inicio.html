@@ -1,0 +1,52 @@
+{% extends "barraca/base.html" %}
+
+{% block contenido %}
+<div style="text-align: center; padding: 20px;">
+    
+    
+    <div style="background: #333; color: white; padding: 40px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h1 style="font-size: 2.8rem; margin-bottom: 10px;">¡Bienvenidos a Ferretería y Barraca La Fe! 🛠️</h1>
+        <p style="font-size: 1.2rem; color: #ff9900; font-weight: bold;">Calidad y confianza en cada herramienta</p>
+    </div>
+
+    {% if mensaje %}
+        <div style="padding: 15px; background-color: #d4edda; color: #155724; border-radius: 5px; margin-bottom: 20px; font-weight: bold;">
+            ✅ {{ mensaje }}
+        </div>
+    {% endif %}
+
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px;">
+        
+        <div style="border: 1px solid #ddd; padding: 25px; border-radius: 12px; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <div style="font-size: 3rem; margin-bottom: 15px;">📰</div>
+            <h3>Blog de Noticias</h3>
+            <p style="color: #666;">Entérate de las últimas novedades y consejos de construcción.</p>
+            <a href="{% url 'listar_posts' %}" style="display: inline-block; margin-top: 10px; color: #ff9900; font-weight: bold; text-decoration: none;">Ir al Blog →</a>
+        </div>
+
+        <div style="border: 1px solid #ddd; padding: 25px; border-radius: 12px; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <div style="font-size: 3rem; margin-bottom: 15px;">📦</div>
+            <h3>Inventario Real</h3>
+            <p style="color: #666;">Consulta el stock de productos disponibles en nuestra barraca.</p>
+            <a href="{% url 'listar_productos' %}" style="display: inline-block; margin-top: 10px; color: #ff9900; font-weight: bold; text-decoration: none;">Ver Productos →</a>
+        </div>
+
+        <div style="border: 1px solid #ddd; padding: 25px; border-radius: 12px; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <div style="font-size: 3rem; margin-bottom: 15px;">🤝</div>
+            <h3>Nuestros Proveedores</h3>
+            <p style="color: #666;">Información y contacto de quienes confían en nosotros.</p>
+            <a href="{% url 'listar_proveedores' %}" style="display: inline-block; margin-top: 10px; color: #ff9900; font-weight: bold; text-decoration: none;">Ver Directorio →</a>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 50px; padding: 20px; border-top: 1px solid #eee; color: #888;">
+        {% if user.is_authenticated %}
+            <p>Sesión activa: <strong>{{ user.username }}</strong> | Panel de Gestión La Fe</p>
+        {% else %}
+            <p>Inicia sesión para acceder a las funciones avanzadas.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

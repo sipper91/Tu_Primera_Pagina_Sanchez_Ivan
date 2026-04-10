@@ -1,0 +1,10 @@
+{% extends "barraca/base.html" %}
+
+{% block contenido %}
+    <h2>{{ titulo }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Datos</button>
+    </form>
+{% endblock %}

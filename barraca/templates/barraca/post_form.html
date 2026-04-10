@@ -1,0 +1,14 @@
+{% extends "barraca/base.html" %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <h2>{% if object %}Editar{% else %}Crear nuevo{% endif %} Post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }} 
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'listar_posts' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
